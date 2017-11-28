@@ -10,4 +10,8 @@ class ProdutoImagem extends Model
     protected $table = 'produto_imagem';
     public $timestamps = true;
 
+    public function produto()
+    {
+        $this->hasOne('App\Produto');
+    }
 }
