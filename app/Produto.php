@@ -8,7 +8,9 @@ class Produto extends Model
 {
     //
     //
-    protected $_table = 'produto';
+    protected $table = 'produto';
     public $timestamps = true;
+
+
 
 }
