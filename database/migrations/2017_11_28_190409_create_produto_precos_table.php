@@ -15,8 +15,8 @@ class CreateProdutoPrecosTable extends Migration
     {
         Schema::create('produto_preco', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('valor_de',10, 2);
-            $table->decimal('valor_por', 10, 2);
+            $table->decimal('valorDe',10, 2);
+            $table->decimal('valorPor', 10, 2);
             $table->timestamp('inicio')->nullable(true);
             $table->timestamp('fim')->nullable(true);
             $table->integer('idProduto')->unsigned();
