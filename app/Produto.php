@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produto extends Model
 {
     //
-    //
+    use SoftDeletes;
+
     protected $table = 'produto';
     public $timestamps = true;
 
@@ -31,6 +33,8 @@ class Produto extends Model
         return $this
                 ->precos()
                 ->where('inicio', '<', new \DateTime())
-                ->where('fim', '>', new \DateTime());
+                ->where('fim', '>', new \DateTime())
+                ->limit(1)
+            ;
     }
 }

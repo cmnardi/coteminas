@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\DB;
 class ProdutoController extends Controller
 {
     //
-    public function index()
+    public function index(Request $req)
     {
+        $perPage = $req->input('itens_per_page') ?? 2;
         return
             Produto::
                 with(
@@ -18,7 +19,8 @@ class ProdutoController extends Controller
                     'imagens',
                     'categoria'
                 )
-                ->paginate(10)
+                ->has('precoAtual')
+                ->paginate($perPage )
             ;
     }
 }
