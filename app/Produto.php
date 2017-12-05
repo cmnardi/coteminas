@@ -31,10 +31,10 @@ class Produto extends Model
     public function precoAtual()
     {
         return $this
-                ->precos()
+                ->hasOne('App\ProdutoPreco', 'idProduto', 'id')
                 ->where('inicio', '<', new \DateTime())
                 ->where('fim', '>', new \DateTime())
-                ->limit(1)
+                ->latest()
             ;
     }
 }
