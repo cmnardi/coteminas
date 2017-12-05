@@ -20,6 +20,7 @@ class ProdutoController extends Controller
                     'categoria'
                 )
                 ->has('precoAtual')
+                ->orderBy('nome')
         ;
         if (!is_null($q)) {
             $r->where('nome', 'like', '%'.$q.'%');
