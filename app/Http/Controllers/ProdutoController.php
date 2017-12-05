@@ -12,15 +12,19 @@ class ProdutoController extends Controller
     public function index(Request $req)
     {
         $perPage = $req->input('itens_per_page') ?? 2;
-        return
-            Produto::
+        $q = $req->input('q') ?? null;
+        $r = Produto::
                 with(
                     'precoAtual',
                     'imagens',
                     'categoria'
                 )
                 ->has('precoAtual')
-                ->paginate($perPage )
-            ;
+        ;
+        if (!is_null($q)) {
+            $r->where('nome', 'like', '%'.$q.'%');
+        }
+        return $r->paginate($perPage )
+        ;
     }
 }
