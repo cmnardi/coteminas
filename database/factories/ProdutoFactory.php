@@ -7,7 +7,7 @@ $factory->define(\App\Produto::class, function (Faker $faker) {
         'nome' => $faker->name(),
         'descricao' => $faker->text(100),
         'idProdutoCategoria' => function () {
-            return factory(App\ProdutoCategoria::class)->create()->id;
-        }
+            return App\ProdutoCategoria::query()->find(rand(1,100));
+        },
     ];
 });
